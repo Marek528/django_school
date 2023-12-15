@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eshop</title>
+    <style>
+        p {
+            margin-top: 0px;
+        }
+    </style>
+</head>
+<body>
+    <h1>E-SHOP</h1>
+    {% if category %}
+        <h2>Kategorie</h2>
+        <ul>
+            {% for i in category %}
+            <li>{{ i }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    {% if produkty %}
+        <h2>Produkty</h2>
+        <ul>
+            {% for i in produkty %}
+            <li><strong>{{ i.nazov }}</strong></li>
+            <ul>
+                <li> <strong>Kategoria:</strong> {{i.kategoria}} </li>
+                <li> <strong>Cena:</strong> {{i.cena}} € </li>
+                <li> <strong>Popis:</strong> <br> <p> {{i.popis}} </p> </li>
+            </ul>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    {% if objednavky %}
+        <h2>Obejdnavky</h2>
+        <ul>
+            {% for i in objednavky %}
+            <h3>  </h3>
+            <li>{{ i.zakaznik.meno }} {{ i.zakaznik.priezvisko }}</li>
+            <li> {{ i.tovar.nazov }}, {{ i.tovar.kategoria }}, {{ i.tovar.cena }} €</li>
+            <li> {{ i.datum }} </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    {% if zakaznici %}
+        <h2>Zakaznici</h2>
+        <ul>
+            {% for i in zakaznici %}
+            <li>{{ i }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>
