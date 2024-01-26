@@ -14,15 +14,15 @@
     <div class="container">
         <div>
             {% if triedy %}
-            <h2>Triedy:</h2>
+            <h2><a href="{% url 'triedy' %}">Triedy:</a></h2>
             <ul>
                 {% for trieda in triedy %}
-                <li>{{trieda}}</li>
+                <li><a href="{% url 'trieda' trieda=trieda %}">{{trieda}}</a></li>
                 {% endfor %}
             </ul>
             {% endif %}
             {%if ucitelia%}
-            <h2>Ucitelia:</h2>
+            <h2><a href="{% url 'ucitelia' %}">Ucitelia:</a></h2>
             <ul>
                 {% for ucitel in ucitelia %}
                 <li>{{ucitel}}</li>
@@ -30,7 +30,7 @@
             </ul>
             {%endif%}
             {%if studenti%}
-            <h2>Studenti:</h2>
+            <h2><a href="{% url 'studenti' %}">Studenti:</a></h2>
             <ul>
                 {% for student in studenti %}
                 <li>{{student}}</li>
