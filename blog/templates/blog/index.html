@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+    <link rel="stylesheet" href="{% static 'blog/style.css' %}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1> BLOG </h1>
+        </div>
+    </header>
+    <div class="container">
+        {% if blogy %}
+            <section class="blog-section">
+                <h2> Posty </h2>
+                <ul>
+                    {% for i in blogy %}
+                    <li class="blog-name"><strong> {{ i.nazov }} </strong></li>
+                    <ul class="blog-popis">
+                        <li><strong>Autor: </strong> {{ i.autor.meno }} {{ i.autor.priezvisko }}, {{ i.autor.username }} </li>
+                        <li><strong>Kategória: </strong> {{ i.kategoria }} </li>
+                        <li><strong>Dátum vytvorenia: </strong> {{ i.create_date }} </li>
+                        <li><strong>Dátum vydania: </strong> {{ i.publish_date }} </li>
+                        <li> {{ i.text }} </li>
+                    </ul>
+                    {% endfor %}
+                </ul>
+                <img src="{% static 'blog/blog.png' %}" alt="blog" title="blog" width="" height="">
+            </section>
+        {% endif %}
+
+        {% if autori %}
+            <section class="authors-section">
+                <h2>Autori</h2>
+                <ul>
+                    {% for i in autori %}
+                    <li> {{ i }} </li>
+                    {% endfor %}
+                </ul>
+            </section>
+        {% endif %}
+    
+
+        
+        {% if kategorie %}
+            <section class="categories-section">
+                <h2>Kategórie</h2>
+                <ul>
+                    {% for i in kategorie %}
+                    <li> {{ i }} </li>
+                    {% endfor %}
+                </ul>
+            </section>
+        {% endif %}
+    </div>
+</body>
+</html>

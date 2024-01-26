@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Môj Eshop</title>
+    <link rel="stylesheet" href="{% static 'eshop/style.css' %}">
+</head>
+<body>
+    <h1>MÔJ E-SHOP</h1>
+    <div class="container">
+    {% if category %}
+        <h2>Kategórie</h2>
+        <ul>
+            {% for i in category %}
+            <li class="nadpis">{{ i }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    {% if produkty %}
+        <h2>Produkty</h2>
+        <ul>
+            {% for i in produkty %}
+            <li class="nadpis">{{ i.nazov }}</li>
+            <ul>
+                <li> <strong>Kategória:</strong> {{i.kategoria}} </li>
+                <li> <strong>Cena:</strong> {{i.cena}} € </li>
+                <li> <strong>Popis:</strong> <br> <p> {{i.popis}} </p> </li>
+            </ul>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    {% if objednavky %}
+        <h2>Obejdnávky</h2>
+        <ul>
+            {% for i in objednavky %}
+            <li><h3> Objednávka č. {{ forloop.counter }} </h3></li>
+            <ul>
+                <li> <strong>Zákazník:</strong> {{ i.zakaznik.meno }} {{ i.zakaznik.priezvisko }}</li>
+                <li> <strong>Produkt:</strong> {{ i.tovar.nazov }}, {{ i.tovar.kategoria }}, {{ i.tovar.cena }} €</li>
+                <li> <strong>Dátum objednávky:</strong> {{ i.datum }} </li>
+            </ul>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    {% if zakaznici %}
+        <h2>Zákazníci</h2>
+        <ul>
+            {% for i in zakaznici %}
+            <li>{{ i }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    </div>
+</body>
+</html>
