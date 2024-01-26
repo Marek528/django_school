@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moja škola</title>
+    <link rel="stylesheet" href="{% static 'skola/style.css' %}" >
+</head>
+<body>
+    <header>
+        {% if trieda %}
+        <h1>{{trieda}}</h1>
+        {% endif %}
+    </header>
+    <div class="container">
+        <div>   
+            {%if ucitel%}
+            <h2>Triedny ucitel</h2>
+            <ul>
+                <li>{{ucitel}}</li>
+            </ul>
+            {%endif%}
+            {%if studenti%}
+            <h2>Studenti:</h2>
+            <ul>
+                {% for student in studenti %}
+                <li>{{student}}</li>
+                {% endfor %}
+            </ul>
+            {%endif%}
+        </div>
+        {% if triedy and ucitelia and studenti %}
+        <div class="obrazok">
+        {% else %}
+        <div>
+        {% endif %}
+            <img src="{% static 'skola/skola.jpg' %}" alt="moderna_skola" title="moderná škola" width="468" height="312">
+        </div>
+    </div>
+</body>
+</html>

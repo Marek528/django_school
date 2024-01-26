@@ -3,8 +3,9 @@ from django.urls import path, include
 from .  import views
 
 urlpatterns = [
-    path('', views.vypis_skola, name='vypis-skola'),
-    path('triedy/', views.vypis_triedy, name='vypis-triedy'),
-    path('studenti/', views.vypis_student, name='vypis-student'),
-    path('ucitelia/', views.vypis_ucitelov, name='vypis-ucitelov'),
+    path('', views.vypis_skola, name='skola'),
+    path('triedy/', views.vypis_triedy, name='triedy'),
+    path('studenti/', views.vypis_student, name='student'),
+    path('ucitelia/', views.vypis_ucitelov, name='ucitelov'),
+    path("triedy/<trieda>/", views.vypis_trieda, name='trieda'),
 ]
