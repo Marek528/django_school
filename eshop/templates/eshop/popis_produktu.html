@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Môj Eshop</title>
+    <link rel="stylesheet" href="{% static 'eshop/style.css' %}">
+</head>
+<body>
+    <h1>MÔJ E-SHOP</h1>
+    <div class="container">
+    {% if produkty %}
+        {% for produkt in produkty %}
+        <h2>{{produkt.nazov}}</h2>
+        <ul>
+            <li> <strong>Kategória:</strong> {{produkt.kategoria}} </li>
+            <li> <strong>Cena:</strong> {{produkt.cena}} € </li>
+            <li> <strong>Popis:</strong> {{produkt.popis}} </li>
+        </ul>
+        {% endfor %}
+    {% endif %}
+    </div>
+</body>
+</html>

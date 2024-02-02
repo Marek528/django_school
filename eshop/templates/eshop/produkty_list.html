@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Môj Eshop</title>
+    <link rel="stylesheet" href="{% static 'eshop/style.css' %}">
+</head>
+<body>
+    <h1>MÔJ E-SHOP</h1>
+    <div class="container">
+    {% if kategoria %}
+        <h2>{{ kategoria }}</h2>
+    {% endif %}
+    {% if produkty %}
+        <ul>
+            {% for i in produkty %}
+            <li class="nadpis"><a href="{% url 'popis-produktu' produkt=i.id %}">{{ i.nazov }}</a></li>
+            <ul>
+                <li> <strong>Cena:</strong> {{i.cena}} € </li>
+            </ul>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    </div>
+</body>
+</html>

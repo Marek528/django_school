@@ -13,20 +13,19 @@
     {% if category %}
         <h2>Kategórie</h2>
         <ul>
-            {% for i in category %}
-            <li class="nadpis">{{ i }}</li>
+            {% for kategoria in category %}
+            <li class="nadpis"><a href="{% url 'vypis-kategoria' kategoria=kategoria %}">{{ kategoria }}</a></li>
             {% endfor %}
         </ul>
     {% endif %}
     {% if produkty %}
         <h2>Produkty</h2>
         <ul>
-            {% for i in produkty %}
-            <li class="nadpis">{{ i.nazov }}</li>
+            {% for produkt in produkty %}
+            <li class="nadpis"><a href="{% url 'popis-produktu' produkt=produkt.id %}">{{ produkt.nazov }}</a></li>
             <ul>
-                <li> <strong>Kategória:</strong> {{i.kategoria}} </li>
-                <li> <strong>Cena:</strong> {{i.cena}} € </li>
-                <li> <strong>Popis:</strong> <br> <p> {{i.popis}} </p> </li>
+                <li> <strong>Kategória:</strong> {{produkt.kategoria}} </li>
+                <li> <strong>Cena:</strong> {{produkt.cena}} € </li>
             </ul>
             {% endfor %}
         </ul>
