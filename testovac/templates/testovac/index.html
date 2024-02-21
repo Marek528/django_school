@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulacka</title>
+</head>
+<body>
+    <h1>Kalkulacka</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <h3>{{a}} {{operator}} {{b}}</h3>
+        <input type="text" name="vysledok">
+        <input type="submit" value="SUBMIT">
+    </form>
+    <h3>{{kontrola}}</h3>
+</body>
+</html>
