@@ -1,50 +1,38 @@
-{% load static %}
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Moja škola</title>
-    <link rel="stylesheet" href="{% static 'skola/style.css' %}" >
-</head>
-<body>
-    <header>
-        <h1>MOJA ŠKOLA</h1>
-    </header>
+{% extends "base.html" %}
+{% block content %}
     <div class="container">
         <div>
             {% if triedy %}
-            <h2><a href="{% url 'triedy' %}">Triedy:</a></h2>
-            <ul>
+            <h2>Triedy:</h2>
+            <ul class='list-group mb-4'>
                 {% for trieda in triedy %}
-                <li><a href="{% url 'trieda' trieda=trieda %}">{{trieda}}</a></li>
+                <li class='list-group-item'><a href="{% url 'trieda' trieda=trieda %}" class="link-offset-2 link-underline link-underline-opacity-50">{{trieda}}</a></li>
                 {% endfor %}
             </ul>
             {% endif %}
             {%if ucitelia%}
-            <h2><a href="{% url 'ucitelia' %}">Ucitelia:</a></h2>
-            <ul>
+            <h2>Ucitelia:</h2>
+            <ul class='list-group mb-4'>
                 {% for ucitel in ucitelia %}
-                <li>{{ucitel}}</li>
+                <li class='list-group-item'>{{ucitel}}</li>
                 {% endfor %}
             </ul>
             {%endif%}
             {%if studenti%}
-            <h2><a href="{% url 'studenti' %}">Studenti:</a></h2>
-            <ul>
+            <h2>Studenti:</h2>
+            <ul class='list-group'>
                 {% for student in studenti %}
-                <li>{{student}}</li>
+                <li class='list-group-item'>{{student}}</li>
                 {% endfor %}
             </ul>
             {%endif%}
         </div>
-        {% if triedy and ucitelia and studenti %}
+        {% comment %} {% if triedy and ucitelia and studenti %}
         <div class="obrazok">
         {% else %}
         <div>
         {% endif %}
             <img src="{% static 'skola/skola.jpg' %}" alt="moderna_skola" title="moderná škola" width="468" height="312">
-        </div>
+        </div> {% endcomment %}
     </div>
-</body>
-</html>
+{% endblock content %}
