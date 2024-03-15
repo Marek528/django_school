@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<header>
+    {% if student %}
+    <h1>Student: {{student.meno}} {{student.priezvisko}}</h1>
+    {% endif %}
+</header>
+<div class="container">
+    
+    {%if trieda%}
+    <p> <strong>Trieda: </strong> <a href="{% url 'trieda' trieda=trieda %}" class="link-offset-2 link-underline link-underline-opacity-50">{{trieda}}</a> </p>
+    {%endif%}
+
+    {%if triedny_ucitel%}
+    <p> <strong>Triedny ucitel: </strong> <a href="{% url 'ucitel' ucitel=triedny_ucitel.id %}" class="link-offset-2 link-underline link-underline-opacity-50">{{triedny_ucitel.titul}} {{triedny_ucitel.meno}} {{triedny_ucitel.priezvisko}}</a> </p>
+    {%endif%}
+    
+</div>
+{% endblock content %}

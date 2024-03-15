@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<header>
+    {% if ucitel %}
+    <h1>Ucitel: {{ucitel.titul}} {{ucitel.meno}} {{ucitel.priezvisko}}</h1>
+    {% endif %}
+</header>
+<div class="container">
+    {%if trieda == 'nie je triedny ucitel'%}
+    <p> <strong>Trieda: </strong> {{trieda}} </p> 
+    {%else%}
+    <p> <strong>Trieda: </strong> <a href="{% url 'trieda' trieda=trieda %}" class="link-offset-2 link-underline link-underline-opacity-50">{{trieda}}</a> </p>
+    {%endif%}
+</div>
+{% endblock content %}

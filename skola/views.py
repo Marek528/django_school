@@ -29,3 +29,16 @@ def vypis_trieda(request, trieda):
     ucitel = f"{ucitel.titul} {ucitel.meno} {ucitel.priezvisko}"
     # return HttpResponse(f"{trieda} <br> {ucitel} <br> {studenti_list} ")
     return render(request, 'skola/trieda_list.html', {"trieda":trieda, "ucitel":ucitel, "studenti":studenti_list})
+
+def student_detail(request, student):
+    student = Student.objects.get(id=student)
+    trieda = Trieda.objects.get(nazov=student.trieda)
+    triedny_ucitel = Ucitel.objects.get(trieda=trieda.id)
+    return render(request, 'skola/student_detail.html', {'student': student, 'trieda': trieda, 'triedny_ucitel': triedny_ucitel})
+
+def ucitel_detail(request, ucitel):
+    ucitel = Ucitel.objects.get(id=ucitel)
+    if ucitel.trieda:
+        trieda = Trieda.objects.get(nazov=ucitel.trieda)
+    trieda = 'nie je triedny ucitel'
+    return render(request, 'skola/ucitel_detail.html', {'ucitel': ucitel, 'trieda': trieda})

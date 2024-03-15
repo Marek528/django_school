@@ -14,7 +14,7 @@
             <h2>Ucitelia:</h2>
             <ul class='list-group mb-4'>
                 {% for ucitel in ucitelia %}
-                <li class='list-group-item'>{{ucitel}}</li>
+                <li class='list-group-item'><a href="{% url 'ucitel' ucitel=ucitel.id %}" class="link-offset-2 link-underline link-underline-opacity-50">{{ucitel}}</a></li>
                 {% endfor %}
             </ul>
             {%endif%}
@@ -22,7 +22,7 @@
             <h2>Studenti:</h2>
             <ul class='list-group'>
                 {% for student in studenti %}
-                <li class='list-group-item'>{{student}}</li>
+                <li class='list-group-item'><a href="{% url 'student' student=student.id %}" class="link-offset-2 link-underline link-underline-opacity-50">{{student}}</a></li>
                 {% endfor %}
             </ul>
             {%endif%}
