@@ -26,6 +26,14 @@
                 {% endfor %}
             </ul>
             {%endif%}
+            {% if kruzky %}
+            <h2>Kruzky:</h2>
+            <ul class='list-group mb-4'>
+                {% for kruzok in kruzky %}
+                <li class='list-group-item'><a href="{% url 'kruzok' kruzok=kruzok.skratka %}" class="link-offset-2 link-underline link-underline-opacity-50">{{kruzok.nazov}}</a></li>
+                {% endfor %}
+            </ul>
+            {% endif %}
         </div>
         {% comment %} {% if triedy and ucitelia and studenti %}
         <div class="obrazok">
