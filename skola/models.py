@@ -16,6 +16,10 @@ class Ucitel(models.Model):
     meno = models.CharField(max_length=20)
     priezvisko = models.CharField(max_length=20)
     trieda = models.ForeignKey(Trieda, on_delete=models.SET_NULL, null=True, blank=True)
+    ulica = models.CharField(max_length=30, null=True)
+    psc = models.CharField(max_length=6, null=True)
+    obec = models.CharField(max_length=40, null=True)
+    datum_narodenia = models.DateField(null=True, blank=True)
 
     def __str__(self):
         if self.trieda:
@@ -46,6 +50,10 @@ class Student(models.Model):
     priezvisko = models.CharField(max_length=20)
     trieda = models.ForeignKey(Trieda, on_delete=models.SET_NULL, null=True, blank=True)
     kruzok = models.ManyToManyField(Kruzok, blank=True)
+    ulica = models.CharField(max_length=30, null=True)
+    psc = models.CharField(max_length=6, null=True)
+    obec = models.CharField(max_length=40, null=True)
+    datum_narodenia = models.DateField(null=True, blank=True)
 
     def __str__(self):
         return f'{self.meno} {self.priezvisko} {self.trieda}'
