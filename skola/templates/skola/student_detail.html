@@ -16,6 +16,10 @@
     {%endif%}
     
     {%if student %}
+    <p><strong> Datum narodenia: </strong> {{student.datum_narodenia}} </p>
+    {%endif%}
+
+    {%if student %}
     <p><strong> Bydlisko: </strong> {{student.ulica}}, {{student.psc}}, {{student.obec}} </p>
     {%endif%}
     {%if kruzky%}

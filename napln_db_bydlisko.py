@@ -14,15 +14,18 @@ lines = f.readlines()
 studenti = Student.objects.all()
 ucitelia = Ucitel.objects.all()
 
-def get_vek(trieda):
-    if trieda[0] == "1":
-        return 16
-    if trieda[0] == "2":
-        return 17
-    if trieda[0] == "3":
-        return 18
+def get_vek(trieda, ucitel=0):
+    if ucitel == 0:
+        if trieda[0] == "1":
+            return 16
+        if trieda[0] == "2":
+            return 17
+        if trieda[0] == "3":
+            return 18
+        else:
+            return 19
     else:
-        return 19
+        return random.randint(28, 65)
 
 def get_date(vek):
     today = datetime.date.today()
@@ -47,6 +50,8 @@ for i in studenti:
 
 for i in ucitelia:
     random_line = random.choice(lines)
+    vek = get_vek(trieda, 1)
+    birth = get_date(vek)
     ulica, psc, obec = random_line.split(';')
     i.ulica = f'{ulica} {random.randint(1, 1500)}'
     i.psc = psc
