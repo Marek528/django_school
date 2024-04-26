@@ -62,3 +62,17 @@ class Student(models.Model):
         verbose_name = "Student"
         verbose_name_plural = "Studenti"
         ordering = ['priezvisko']
+
+class Uzivatel(models.Model):
+    meno = models.CharField(max_length=20)
+    priezvisko = models.CharField(max_length=20)
+    email = models.EmailField()
+    datum = models.DateField()
+
+    def __str__(self):
+        return f'{self.meno} {self.priezvisko}'
+    
+    class Meta:
+        verbose_name = 'Uzivatel'
+        verbose_name_plural = 'Uzivatelia'
+        ordering = ['priezvisko', 'meno']

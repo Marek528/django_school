@@ -1,5 +1,6 @@
 from django.shortcuts import render, HttpResponse
 from . models import *
+from . forms import *
 
 def vypis_skola(request):
     triedy = Trieda.objects.all().order_by("nazov")
@@ -60,3 +61,25 @@ def kruzky_detail(request, kruzok):
     ucitel = obj_kruzok.ucitel
 
     return render(request, 'skola/kruzky_detail.html', {'studenti':studenti, 'ucitel':ucitel, 'kruzok':obj_kruzok})
+
+def uzivatel_add(request):
+    if request.method == 'GET':
+        return render(request, 'skola/uzivatel_add.html')
+    else:
+        uzivatel = Uzivatel(
+            meno = request.POST['meno'],
+            priezvisko = request.POST['priezvisko'],
+            email = request.POST['email'],
+            datum = request.POST['datum']
+        )
+        uzivatel.save()
+        return HttpResponse("OK")
+
+def uzivatel_add2(request):
+    if request.method == 'POST':
+        form = UzivatelForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponse("OK")
+    else:
+        form = UzivatelForm()
